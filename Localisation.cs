@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Localisation : MonoBehaviour
+public abstract class Localisation : MonoBehaviour
 {
     [SerializeField] private string _key;
 
@@ -26,3 +26,4 @@ public class Localisation : MonoBehaviour
 
     public virtual void UpdateTranslation() { }
 }
+
