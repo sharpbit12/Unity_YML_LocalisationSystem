@@ -71,7 +71,8 @@ public static class LocalisationManager
 
     public static string lang
     {
-        get { return SaveManager.GetString("lang"); }
-        set { SaveManager.SetString("lang", value); }
+        get { return PlayerPrefs.GetString("lang"); }
+        set { PlayerPrefs.SetString("lang", value); }
     }
 }
+
