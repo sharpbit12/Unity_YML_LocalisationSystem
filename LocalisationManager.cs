@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 public static class LocalisationManager
 {
+    private static string folderPath = "Assets/Localisation";
     public static Action onLanguageChanged;
 
     public static string GetTranslation(string key)
     {
-        string localisationFolderPath = "Assets/Localisation";
-
-        string[] localisationFiles = Directory.GetFiles(localisationFolderPath, $"*_{lang}.yml", SearchOption.AllDirectories);
+        string[] localisationFiles = Directory.GetFiles(folderPath, $"*_{lang}.yml", SearchOption.AllDirectories);
 
         string pattern = $@"^{Regex.Escape(key)}:\s*(.*)$";
 
@@ -39,7 +37,6 @@ public static class LocalisationManager
 
     public static string[] GetAllLanguages()
     {
-        string folderPath = "Assets/Localisation";
         if (!Directory.Exists(folderPath))
         {
             Debug.LogWarning($"Folder {folderPath} not found");
@@ -75,4 +72,3 @@ public static class LocalisationManager
         set { PlayerPrefs.SetString("lang", value); }
     }
 }
-
